@@ -13,11 +13,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val movies = listOf(
-            Movie(1, "Начало", 2010, 8.8f),
-            Movie(2, "Интерстеллар", 2014, 8.6f),
-            Movie(3, "Матрица", 1999, 8.7f),
-            Movie(4, "Джентльмены", 2019, 8.3f),
-            Movie(5, "Довод", 2020, 7.4f)
+            Movie(id = 1, title = "Начало", year = 2010, rating = 8.8f, status = "WATCHED", genreId = 1),
+            Movie(id = 2, title = "Интерстеллар", year = 2014, rating = 8.6f, status = "WATCHED", genreId = 1),
+            Movie(id = 3, title = "Матрица", year = 1999, rating = 8.7f, status = "WATCHED", genreId = 1),
+            Movie(id = 4, title = "Джентльмены", year = 2019, rating = 8.3f, status = "PLANNED", genreId = 2),
+            Movie(id = 5, title = "Довод", year = 2020, rating = 7.4f, status = "PLANNED", genreId = 2)
         )
 
         val rvMovies = findViewById<RecyclerView>(R.id.rvMovie)
