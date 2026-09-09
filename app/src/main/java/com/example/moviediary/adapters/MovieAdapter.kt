@@ -1,10 +1,12 @@
-package com.example.moviediary
+package com.example.moviediary.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moviediary.R
+import com.example.moviediary.models.Movie
 
 class MovieViewHandler(view: View) : RecyclerView.ViewHolder(view) {
     val title: TextView = view.findViewById(R.id.movieTitle)
