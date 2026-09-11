@@ -13,5 +13,5 @@ interface GenreDao {
     suspend fun insert(genre: Genre): Long
 
     @Query("SELECT * FROM genres")
-    fun gerAllGenres(): Flow<List<Genre>>
+    fun getAllGenres(): Flow<List<Genre>>
 }
