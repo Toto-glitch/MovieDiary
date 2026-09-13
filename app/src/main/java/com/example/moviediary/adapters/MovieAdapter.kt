@@ -15,7 +15,7 @@ class MovieViewHandler(view: View) : RecyclerView.ViewHolder(view) {
 }
 
 
-class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<MovieViewHandler>() {
+class MovieAdapter(private var movies: List<Movie>) : RecyclerView.Adapter<MovieViewHandler>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHandler {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
@@ -30,4 +30,9 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
     }
 
     override fun getItemCount(): Int = movies.size
+
+    fun updateMovies(newMovies: List<Movie>) {
+        movies = newMovies
+        notifyDataSetChanged()
+    }
 }
