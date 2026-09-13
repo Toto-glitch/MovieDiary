@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieDiary">
         <activity
-            android:name=".MainActivity"
+            android:name=".screens.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
