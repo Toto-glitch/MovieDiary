@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviediary.R
 import com.example.moviediary.adapters.MovieAdapter
 import com.example.moviediary.viewmodels.MovieViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
     private val viewModel: MovieViewModel by activityViewModels()
@@ -16,6 +17,13 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<FloatingActionButton>(R.id.fabAdd).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, AddMovieFragment())
+                .addToBackStack(null)
+                .commit()
+        }
 
         adapter = MovieAdapter(emptyList())
         val rvMovies = view.findViewById<RecyclerView>(R.id.rvMovies)
