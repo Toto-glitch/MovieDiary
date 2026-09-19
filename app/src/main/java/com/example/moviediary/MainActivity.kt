@@ -1,11 +1,10 @@
-package com.example.moviediary.screens
+package com.example.moviediary
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moviediary.R
 import com.example.moviediary.adapters.MovieAdapter
 import com.example.moviediary.viewmodels.MovieViewModel
 
@@ -18,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         adapter = MovieAdapter(emptyList())
-        val rvMovies = findViewById<RecyclerView>(R.id.rvMovie)
+        val rvMovies = findViewById<RecyclerView>(R.id.rvMovies)
         rvMovies.layoutManager = LinearLayoutManager(this)
         rvMovies.adapter = adapter
 
