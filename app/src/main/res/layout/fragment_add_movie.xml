@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Отмена"
+            android:textColor="@color/colorTextMuted"
+            android:textSize="15sp"
+            android:padding="8dp" />
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Новый фильм"
+            android:textColor="@color/colorTextPrimary"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Сохранить"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:padding="8dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorBorder" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <FrameLayout
+                android:id="@+id/posterDrop"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_poster_drop">
+
+                <LinearLayout
+                    android:id="@+id/posterPlaceholder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Добавить постер"
+                        android:textColor="@color/colorTextMuted"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/posterImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="НАЗВАНИЕ"
+                android:textColor="@color/colorTextMuted"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                android:hint="Введите название фильма"
+                android:textColor="@color/colorTextPrimary"
+                android:textColorHint="@color/colorTextMuted"
+                android:background="@drawable/bg_input"
+                android:padding="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ГОД"
+                android:textColor="@color/colorTextMuted"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                android:inputType="number"
+                android:textColor="@color/colorTextPrimary"
+                android:background="@drawable/bg_input"
+                android:padding="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ЖАНР (один на фильм)"
+                android:textColor="@color/colorTextMuted"
+                android:textSize="12sp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:singleSelection="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="СТАТУС ПРОСМОТРА"
+                android:textColor="@color/colorTextMuted"
+                android:textSize="12sp" />
+
+            <RadioGroup
+                android:id="@+id/rgStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:padding="4dp">
+
+                <RadioButton
+                    android:id="@+id/rbWatching"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Смотрю"
+                    android:textColor="@color/colorTextPrimary"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="10dp" />
+
+                <RadioButton
+                    android:id="@+id/rbWatched"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Просмотрено"
+                    android:textColor="@color/colorTextPrimary"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:checked="true" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ДАТА ПРОСМОТРА"
+                android:textColor="@color/colorTextMuted"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                android:hint="дд.мм.гггг"
+                android:focusable="false"
+                android:textColor="@color/colorTextPrimary"
+                android:textColorHint="@color/colorTextMuted"
+                android:background="@drawable/bg_input"
+                android:padding="12dp" />
+
+            <TextView
+                android:id="@+id/tvRatingLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ОЦЕНКА — 5/10"
+                android:textColor="@color/colorTextMuted"
+                android:textSize="12sp" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:numStars="10"
+                android:stepSize="1"
+                android:rating="5"
+                android:progressTint="@color/colorAccent"
+                android:progressBackgroundTint="@color/colorSurface" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ТЕГИ (через запятую)"
+                android:textColor="@color/colorTextMuted"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                android:hint="пересмотреть, с друзьями"
+                android:textColor="@color/colorTextPrimary"
+                android:textColorHint="@color/colorTextMuted"
+                android:background="@drawable/bg_input"
+                android:padding="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ОТЗЫВ"
+                android:textColor="@color/colorTextMuted"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etReview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:minLines="4"
+                android:gravity="top"
+                android:hint="Ваши впечатления от фильма..."
+                android:textColor="@color/colorTextPrimary"
+                android:textColorHint="@color/colorTextMuted"
+                android:background="@drawable/bg_input"
+                android:padding="12dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
