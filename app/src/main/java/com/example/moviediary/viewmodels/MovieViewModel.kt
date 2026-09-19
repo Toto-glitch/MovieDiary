@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.moviediary.AppDatabase
 import com.example.moviediary.models.Genre
 import com.example.moviediary.models.Movie
+import com.example.moviediary.models.MovieTagRef
+import com.example.moviediary.models.Tag
 import kotlinx.coroutines.launch
 
 class MovieViewModel(app: Application) : AndroidViewModel(app) {
@@ -20,6 +22,15 @@ class MovieViewModel(app: Application) : AndroidViewModel(app) {
     val allGenres: LiveData<List<Genre>> = genreDao.getAllGenres().asLiveData()
 
     fun insert(movie: Movie) = viewModelScope.launch {
-        dao.insert(movie)
+        movieDao.insert(movie)
+    }
+
+    fun insertMovieWithTags(movie: Movie, tagNames: List<String>) = viewModelScope.launch {
+        val movieId = movieDao.insert(movie);
+        tagNames.forEach { tagName ->
+            val existing = tagDao.findByName(tagName);
+            val tagId = existing?.id ?: tagDao.insert(Tag(name = tagName))
+            movieTagDao.insertRef(MovieTagRef(movieId = movieId, tagId = tagId))
+        }
     }
 }
