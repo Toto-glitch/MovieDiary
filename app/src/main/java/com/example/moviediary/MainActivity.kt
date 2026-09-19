@@ -1,28 +1,18 @@
 package com.example.moviediary
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.moviediary.adapters.MovieAdapter
-import com.example.moviediary.viewmodels.MovieViewModel
+import com.example.moviediary.fragments.MovieListFragment
 
 class MainActivity : AppCompatActivity() {
-    private val viewModel: MovieViewModel by viewModels()
-    private lateinit var adapter: MovieAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = MovieAdapter(emptyList())
-        val rvMovies = findViewById<RecyclerView>(R.id.rvMovies)
-        rvMovies.layoutManager = LinearLayoutManager(this)
-        rvMovies.adapter = adapter
-
-        viewModel.allMovies.observe(this) {
-            movies -> adapter.updateMovies(movies)
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, MovieListFragment())
+                .commit()
         }
     }
 }
