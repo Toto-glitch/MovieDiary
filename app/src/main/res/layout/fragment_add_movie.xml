@@ -213,18 +213,13 @@
                 android:textColor="@color/colorTextMuted"
                 android:textSize="12sp" />
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
+            <LinearLayout
+                android:id="@+id/ratingStarsContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:numStars="10"
-                android:stepSize="1"
-                android:rating="5"
-                android:progressTint="@color/colorAccent"
-                android:progressBackgroundTint="@color/colorSurface" />
+                android:layout_marginBottom="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
