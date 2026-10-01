@@ -62,15 +62,21 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" />
 
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
                 <TextView
                     android:id="@+id/tvStatusBadge"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:background="@drawable/bg_badge"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -132,7 +138,7 @@
                     android:textStyle="bold"
                     android:gravity="center"
                     android:padding="14dp"
-                    android:background="@color/colorRed" />
+                    android:background="@drawable/bg_accent_button" />
             </LinearLayout>
 
         </LinearLayout>
