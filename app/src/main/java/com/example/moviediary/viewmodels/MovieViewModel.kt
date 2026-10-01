@@ -25,6 +25,11 @@ class MovieViewModel(app: Application) : AndroidViewModel(app) {
         movieDao.insert(movie)
     }
 
+    suspend fun getMovieById(id: Long): Movie? = dao.getMovieById(id)
+    suspend fun getGenreById(id: Long): Genre? = genreDao.getGenreById(id)
+    fun getTagsForMovie(movieId: Long): LiveData<List<Tag>> = movieTagDao.getTagsForMovie(movieId).asLiveData()
+    fun deleteMovie(movie: Movie) = viewModelScope.launch { dao.delete(movie) }
+
     fun insertMovieWithTags(movie: Movie, tagNames: List<String>) = viewModelScope.launch {
         val movieId = movieDao.insert(movie);
         tagNames.forEach { tagName ->
