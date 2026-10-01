@@ -21,14 +21,10 @@ class MovieViewModel(app: Application) : AndroidViewModel(app) {
     val allMovies: LiveData<List<Movie>> = movieDao.getAllMovies().asLiveData()
     val allGenres: LiveData<List<Genre>> = genreDao.getAllGenres().asLiveData()
 
-    fun insert(movie: Movie) = viewModelScope.launch {
-        movieDao.insert(movie)
-    }
-
-    suspend fun getMovieById(id: Long): Movie? = dao.getMovieById(id)
+    suspend fun getMovieById(id: Long): Movie? = movieDao.getMovieById(id)
     suspend fun getGenreById(id: Long): Genre? = genreDao.getGenreById(id)
     fun getTagsForMovie(movieId: Long): LiveData<List<Tag>> = movieTagDao.getTagsForMovie(movieId).asLiveData()
-    fun deleteMovie(movie: Movie) = viewModelScope.launch { dao.delete(movie) }
+    fun deleteMovie(movie: Movie) = viewModelScope.launch { movieDao.delete(movie) }
 
     fun insertMovieWithTags(movie: Movie, tagNames: List<String>) = viewModelScope.launch {
         val movieId = movieDao.insert(movie);
