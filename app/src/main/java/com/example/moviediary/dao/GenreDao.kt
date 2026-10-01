@@ -14,4 +14,7 @@ interface GenreDao {
 
     @Query("SELECT * FROM genres")
     fun getAllGenres(): Flow<List<Genre>>
+
+    @Query("SELECT * FROM genres WHERE id = :id")
+    suspend fun getGenreById(id: Long): Genre?
 }
