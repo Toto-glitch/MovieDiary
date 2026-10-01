@@ -25,7 +25,14 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
                 .commit()
         }
 
-        adapter = MovieAdapter(emptyList())
+        adapter = MovieAdapter(emptyList()) { movie ->
+            val fragment = MovieDetailFragment()
+            fragment.arguments = Bundle().apply { putLong("movieId", movie.id) }
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
         val rvMovies = view.findViewById<RecyclerView>(R.id.rvMovies)
         rvMovies.layoutManager = LinearLayoutManager(requireContext())
         rvMovies.adapter = adapter
