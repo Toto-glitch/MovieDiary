@@ -15,7 +15,10 @@ class MovieViewHandler(view: View) : RecyclerView.ViewHolder(view) {
 }
 
 
-class MovieAdapter(private var movies: List<Movie>) : RecyclerView.Adapter<MovieViewHandler>() {
+class MovieAdapter(
+        private var movies: List<Movie>,
+        private val onMovieCLick: (Movie) -> Unit
+    ) : RecyclerView.Adapter<MovieViewHandler>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHandler {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
@@ -27,6 +30,7 @@ class MovieAdapter(private var movies: List<Movie>) : RecyclerView.Adapter<Movie
         holder.title.text = movie.title
         holder.year.text = movie.year.toString()
         holder.rating.text = "⭐ ${movie.rating}"
+        holder.itemView.setOnClickListener { onMovieCLick(movie) }
     }
 
     override fun getItemCount(): Int = movies.size
