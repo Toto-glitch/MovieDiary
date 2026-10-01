@@ -10,4 +10,5 @@
     <color name="colorTextMuted">#8B8B96</color>
     <color name="colorBlue">#64B4FF</color>
     <color name="colorRed">#E87B5B</color>
+    <color name="colorAccentSoftSolid">#3D2F1A</color>
 </resources>
