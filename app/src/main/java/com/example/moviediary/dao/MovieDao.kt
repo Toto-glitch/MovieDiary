@@ -31,4 +31,7 @@ interface MovieDao {
 
     @Query("SELECT * FROM movies WHERE genreId = :genreId")
     fun getMoviesByGenre(genreId: Long): Flow<List<Movie>>
+
+    @Query("DELETE FROM movies")
+    suspend fun deleteAll()
 }
