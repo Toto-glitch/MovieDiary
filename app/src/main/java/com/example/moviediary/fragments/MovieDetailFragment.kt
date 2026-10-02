@@ -76,6 +76,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             if (movie.watchedDate != null) {
                 val dateText = android.text.format.DateFormat.format("dd.MM.yyyy", movie.watchedDate)
                 addMetaItem(metaRow, "ПРОСМОТРЕНО", dateText.toString())
+            } else {
+                metaRow.visibility = View.GONE
             }
 
             if (!movie.review.isNullOrBlank()) {
