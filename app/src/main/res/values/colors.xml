@@ -11,4 +11,6 @@
     <color name="colorBlue">#64B4FF</color>
     <color name="colorRed">#E87B5B</color>
     <color name="colorAccentSoftSolid">#3D2F1A</color>
+    <color name="colorBlueSoftSolid">#1E2B3A</color>
+    <color name="colorPosterPlaceholder">#38383F</color>
 </resources>
