@@ -27,12 +27,25 @@ class MovieViewModel(app: Application) : AndroidViewModel(app) {
     fun deleteMovie(movie: Movie) = viewModelScope.launch { movieDao.delete(movie) }
     fun deleteAllMovies() = viewModelScope.launch { movieDao.deleteAll() }
 
-    fun insertMovieWithTags(movie: Movie, tagNames: List<String>) = viewModelScope.launch {
-        val movieId = movieDao.insert(movie);
+    private suspend fun linkTags(movieId: Long, tagNames: List<String>) {
         tagNames.forEach { tagName ->
-            val existing = tagDao.findByName(tagName);
+            val existing = tagDao.findByName(tagName)
             val tagId = existing?.id ?: tagDao.insert(Tag(name = tagName))
             movieTagDao.insertRef(MovieTagRef(movieId = movieId, tagId = tagId))
         }
     }
+
+    fun insertMovieWithTags(movie: Movie, tagNames: List<String>) = viewModelScope.launch {
+        val movieId = movieDao.insert(movie)
+        linkTags(movieId, tagNames)
+    }
+
+    fun updateMovieWithTags(movie: Movie, tagNames: List<String>) = viewModelScope.launch {
+        movieDao.update(movie)
+        movieTagDao.deleteAllForMovie(movie.id)
+        linkTags(movie.id, tagNames)
+    }
+
+    suspend fun getTagNamesForMovie(movieId: Long): List<String> =
+        movieTagDao.getTagsForMovieOnce(movieId).map { it.name }
 }
