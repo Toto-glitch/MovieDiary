@@ -23,4 +23,14 @@ interface MovieTagDao {
         WHERE movie_tags.movieId = :movieId
     """)
     fun getTagsForMovie(movieId: Long): Flow<List<Tag>>
+
+    @Query("""
+    SELECT tags.* FROM tags
+    INNER JOIN movie_tags ON tags.id = movie_tags.tagId
+    WHERE movie_tags.movieId = :movieId
+""")
+    suspend fun getTagsForMovieOnce(movieId: Long): List<Tag>
+
+    @Query("DELETE FROM movie_tags WHERE movieId = :movieId")
+    suspend fun deleteAllForMovie(movieId: Long)
 }
