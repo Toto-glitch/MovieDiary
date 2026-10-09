@@ -38,6 +38,15 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         val btnBack = view.findViewById<TextView>(R.id.btnBack)
         val btnDelete = view.findViewById<TextView>(R.id.btnDelete)
 
+        view.findViewById<TextView>(R.id.btnEdit).setOnClickListener {
+            val fragment = AddMovieFragment()
+            fragment.arguments = Bundle().apply { putLong("movieId", movieId) }
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
         btnBack.setOnClickListener { parentFragmentManager.popBackStack() }
 
         viewLifecycleOwner.lifecycleScope.launch {
