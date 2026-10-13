@@ -82,12 +82,22 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                 starsContainer.addView(ratingText)
             }
 
+            var hasMeta = false
+
             if (movie.watchedDate != null) {
                 val dateText = android.text.format.DateFormat.format("dd.MM.yyyy", movie.watchedDate)
                 addMetaItem(metaRow, "ПРОСМОТРЕНО", dateText.toString())
-            } else {
-                metaRow.visibility = View.GONE
+                hasMeta = true
             }
+
+            val duration = movie.durationMinutes
+            if (duration != null && duration > 0) {
+                addMetaItem(metaRow, "ДЛИТЕЛЬНОСТЬ", "${duration / 60}ч ${duration % 60}м")
+                hasMeta = true
+            }
+
+// Если показывать нечего, прячем всю карточку, чтобы не было пустой плашки
+            if (!hasMeta) metaRow.visibility = View.GONE
 
             if (!movie.review.isNullOrBlank()) {
                 tvReviewLabel.visibility = View.VISIBLE
@@ -145,6 +155,10 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         }
         layout.addView(lbl)
         layout.addView(value_)
-        container.addView(layout)
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        ).apply { marginEnd = (24 * resources.displayMetrics.density).toInt() }
+        container.addView(layout, params)
     }
 }

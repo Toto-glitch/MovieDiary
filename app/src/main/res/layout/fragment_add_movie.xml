@@ -131,6 +131,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="ДЛИТЕЛЬНОСТЬ (минуты)"
+                android:textColor="@color/colorTextMuted"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                android:hint="например, 148"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="@color/colorTextPrimary"
+                android:textColorHint="@color/colorTextMuted"
+                android:background="@drawable/bg_input"
+                android:padding="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="ЖАНР (один на фильм)"
                 android:textColor="@color/colorTextMuted"
                 android:textSize="12sp" />

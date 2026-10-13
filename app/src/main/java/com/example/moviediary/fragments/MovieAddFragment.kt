@@ -40,6 +40,7 @@ class AddMovieFragment : Fragment(R.layout.fragment_add_movie) {
         val tvHeaderTitle = view.findViewById<TextView>(R.id.tvHeaderTitle)
         val etTitle = view.findViewById<EditText>(R.id.etTitle)
         val etYear = view.findViewById<EditText>(R.id.etYear)
+        val etDuration = view.findViewById<EditText>(R.id.etDuration)
         val chipGroup = view.findViewById<ChipGroup>(R.id.chipGroupGenre)
         val rbWatching = view.findViewById<RadioButton>(R.id.rbWatching)
         val rbWatched = view.findViewById<RadioButton>(R.id.rbWatched)
@@ -168,7 +169,7 @@ class AddMovieFragment : Fragment(R.layout.fragment_add_movie) {
                 title = title,
                 year = etYear.text.toString().toIntOrNull() ?: Calendar.getInstance().get(Calendar.YEAR),
                 posterUrl = editingMovie?.posterUrl,
-                durationMinutes = editingMovie?.durationMinutes,
+                durationMinutes = etDuration.text.toString().trim().toIntOrNull()?.takeIf { it > 0 },
                 status = if (isWatched) "WATCHED" else "PLANNED",
                 watchedDate = if (isWatched) pickedDateMillis else null,
                 rating = if (isWatched) currentRating.toFloat() else null,
@@ -201,6 +202,7 @@ class AddMovieFragment : Fragment(R.layout.fragment_add_movie) {
 
                 etTitle.setText(movie.title)
                 etYear.setText(movie.year.toString())
+                etDuration.setText(movie.durationMinutes?.toString() ?: "")
                 etReview.setText(movie.review ?: "")
                 etTags.setText(viewModel.getTagNamesForMovie(movieId).joinToString(", "))
 
