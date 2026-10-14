@@ -118,7 +118,7 @@ class AddMovieFragment : Fragment(R.layout.fragment_add_movie) {
                 it.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorTextPrimary))
             }
             chip.setChipBackgroundColorResource(R.color.colorAccent)
-            chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBackground))
+            chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorOnAccent))
             selectedGenreChip = chip
             selectedGenreId = genreId
         }

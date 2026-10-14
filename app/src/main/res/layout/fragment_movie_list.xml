@@ -95,6 +95,6 @@
             android:layout_margin="20dp"
             android:src="@android:drawable/ic_input_add"
             app:backgroundTint="@color/colorAccent"
-            app:tint="@color/colorBackground" />
+            app:tint="@color/colorOnAccent" />
     </FrameLayout>
 </LinearLayout>

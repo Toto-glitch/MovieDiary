@@ -26,6 +26,8 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import java.util.Calendar
 import java.util.Locale
 import kotlin.math.roundToInt
+import androidx.core.graphics.toColorInt
+import com.example.moviediary.utils.SettingsManager
 
 class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
 
@@ -42,10 +44,11 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
     private lateinit var chartsContent: LinearLayout
     private lateinit var pieChart: PieChart
     private lateinit var barChart: BarChart
+    private lateinit var tvHoursLabel: TextView
 
     private val palette = listOf(
         "#E8A33D", "#5B9BD5", "#7EC8A0", "#C97BB2", "#E87B5B", "#8DA3E8", "#8B8B96"
-    ).map { Color.parseColor(it) }
+    ).map { it.toColorInt() }
 
     private val monthLabels = listOf(
         "Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"
@@ -62,6 +65,7 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
         chartsContent = view.findViewById(R.id.chartsContent)
         pieChart = view.findViewById(R.id.pieChart)
         barChart = view.findViewById(R.id.barChart)
+        tvHoursLabel = view.findViewById(R.id.tvHoursLabel)
 
         viewModel.allMovies.observe(viewLifecycleOwner) {
             movies = it
@@ -83,7 +87,13 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
         else String.format(Locale.US, "%.1f", ratings.average())
 
         val totalMinutes = watched.sumOf { it.durationMinutes ?: 0 }
-        tvHours.text = (totalMinutes / 60f).roundToInt().toString()
+        if (SettingsManager.isDurationInHours(requireContext())) {
+            tvHours.text = (totalMinutes / 60f).roundToInt().toString()
+            tvHoursLabel.text = "Часов просмотрено"
+        } else {
+            tvHours.text = totalMinutes.toString()
+            tvHoursLabel.text = "Минут просмотрено"
+        }
 
         if (watched.isEmpty()) {
             chartsContent.visibility = View.GONE

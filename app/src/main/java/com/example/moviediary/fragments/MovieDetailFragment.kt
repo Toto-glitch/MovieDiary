@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.moviediary.R
 import com.example.moviediary.models.Movie
+import com.example.moviediary.utils.SettingsManager
 import com.example.moviediary.viewmodels.MovieViewModel
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -92,8 +93,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
             val duration = movie.durationMinutes
             if (duration != null && duration > 0) {
-                addMetaItem(metaRow, "ДЛИТЕЛЬНОСТЬ", "${duration / 60}ч ${duration % 60}м")
-                hasMeta = true
+                addMetaItem(metaRow, "ДЛИТЕЛЬНОСТЬ", SettingsManager.formatDuration(requireContext(), duration))
             }
 
 // Если показывать нечего, прячем всю карточку, чтобы не было пустой плашки

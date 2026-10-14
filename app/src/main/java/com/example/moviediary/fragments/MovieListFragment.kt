@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviediary.R
 import com.example.moviediary.adapters.MovieAdapter
 import com.example.moviediary.models.Movie
+import com.example.moviediary.utils.SettingsManager
 import com.example.moviediary.viewmodels.MovieViewModel
 import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -39,6 +40,10 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sortMode = runCatching {
+            SortMode.valueOf(SettingsManager.getDefaultSort(requireContext()))
+        }.getOrDefault(SortMode.YEAR)
 
         chipRow = view.findViewById(R.id.chipRow)
         tvEmpty = view.findViewById(R.id.tvEmpty)
@@ -146,7 +151,7 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
             checkedIcon = null
             chipStrokeWidth = if (active) 0f else 1f
             setChipStrokeColorResource(R.color.colorBorder)
-            setChipBackgroundColorResource(if (active) R.color.colorAccent else R.color.colorBackground)
+            setChipBackgroundColorResource(if (active) R.color.colorOnAccent else R.color.colorBackground)
             setTextColor(ContextCompat.getColor(ctx, if (active) R.color.colorBackground else R.color.colorTextMuted))
             typeface = if (active) Typeface.DEFAULT_BOLD else Typeface.DEFAULT
             setOnClickListener { onClick() }
