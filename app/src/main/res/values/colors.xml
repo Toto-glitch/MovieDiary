@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorBackground">#1A1A1E</color>
-    <color name="colorSurface">#2A2A30</color>
-    <color name="colorSurfaceHover">#32323A</color>
-    <color name="colorBorder">#22FFFFFF</color>
-    <color name="colorAccent">#E8A33D</color>
-    <color name="colorAccentSoft">#26E8A33D</color>
-    <color name="colorTextPrimary">#F0F0F5</color>
-    <color name="colorTextMuted">#8B8B96</color>
-    <color name="colorBlue">#64B4FF</color>
-    <color name="colorRed">#E87B5B</color>
-    <color name="colorAccentSoftSolid">#3D2F1A</color>
-    <color name="colorBlueSoftSolid">#1E2B3A</color>
-    <color name="colorPosterPlaceholder">#38383F</color>
+    <color name="colorBackground">#F6F5F2</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorSurfaceHover">#ECEAE6</color>
+    <color name="colorBorder">#1F000000</color>
+    <color name="colorAccent">#D98E1F</color>
+    <color name="colorAccentSoft">#26D98E1F</color>
+    <color name="colorAccentSoftSolid">#F7E8CC</color>
+    <color name="colorTextPrimary">#1A1A1E</color>
+    <color name="colorTextMuted">#6B6B76</color>
+    <color name="colorBlue">#2F7FD6</color>
+    <color name="colorBlueSoftSolid">#DCE9F7</color>
+    <color name="colorRed">#D9603F</color>
+    <color name="colorPosterPlaceholder">#E4E2DD</color>
+    <color name="colorOnAccent">#1A1A1E</color>
 </resources>
