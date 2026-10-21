@@ -10,7 +10,11 @@ import com.example.moviediary.models.Genre
 import com.example.moviediary.models.Movie
 import com.example.moviediary.models.MovieTagRef
 import com.example.moviediary.models.Tag
+import com.example.moviediary.network.FilmItem
+import com.example.moviediary.network.KinopoiskClient
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import java.io.IOException
 
 class MovieViewModel(app: Application) : AndroidViewModel(app) {
 
@@ -48,4 +52,19 @@ class MovieViewModel(app: Application) : AndroidViewModel(app) {
 
     suspend fun getTagNamesForMovie(movieId: Long): List<String> =
         movieTagDao.getTagsForMovieOnce(movieId).map { it.name }
+
+
+    suspend fun searchFilms(query: String): Result<List<FilmItem>> {
+        return try {
+            val response = KinopoiskClient.api.searchByKeyword(query)
+            Result.success(response.films.orEmpty())
+        } catch (e: IOException) {
+            Result.failure(Exception("Нет подключения к интернету"))
+        } catch (e: HttpException) {
+            val text = if (e.code() == 401) "Неверный API-ключ" else "Ошибка сервера (${e.code()})"
+            Result.failure(Exception(text))
+        } catch (e: Exception) {
+            Result.failure(Exception("Не удалось выполнить поиск"))
+        }
+    }
 }

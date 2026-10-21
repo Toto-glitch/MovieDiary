@@ -6,9 +6,12 @@ import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import coil.dispose
+import coil.load
 import com.example.moviediary.R
 import com.example.moviediary.models.Movie
 
@@ -24,6 +27,7 @@ class MovieAdapter(
         val sub: TextView = view.findViewById(R.id.tvSub)
         val stars: TextView = view.findViewById(R.id.tvStars)
         val badge: TextView = view.findViewById(R.id.tvBadge)
+        val poster: ImageView = view.findViewById<ImageView>(R.id.ivPoster)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -40,6 +44,16 @@ class MovieAdapter(
         holder.posterLetter.text = movie.title.take(1).uppercase()
         holder.title.text = movie.title
         holder.sub.text = "${movie.year} · ${genreNames[movie.genreId] ?: ""}"
+
+        val url = movie.posterUrl
+        if (url.isNullOrBlank()) {
+            holder.poster.dispose()
+            holder.poster.setImageDrawable(null)
+            holder.posterLetter.visibility = View.VISIBLE
+        } else {
+            holder.posterLetter.visibility = View.GONE
+            holder.poster.load(url)
+        }
 
         val rating = movie.rating
         if (movie.status == "WATCHED" && rating != null && rating > 0) {

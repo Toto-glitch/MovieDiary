@@ -11,7 +11,14 @@
         android:layout_width="64dp"
         android:layout_height="90dp"
         android:layout_marginEnd="14dp"
-        android:background="@drawable/bg_poster_placeholder">
+        android:background="@drawable/bg_poster_placeholder"
+        android:clipToOutline="true">
+
+        <ImageView
+            android:id="@+id/ivPoster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/tvPosterLetter"

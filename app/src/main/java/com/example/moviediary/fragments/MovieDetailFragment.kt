@@ -3,12 +3,14 @@ package com.example.moviediary.fragments
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import coil.load
 import com.example.moviediary.R
 import com.example.moviediary.models.Movie
 import com.example.moviediary.utils.SettingsManager
@@ -53,6 +55,13 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         viewLifecycleOwner.lifecycleScope.launch {
             val movie = viewModel.getMovieById(movieId) ?: return@launch
             currentMovie = movie
+
+            val ivPoster = view.findViewById<ImageView>(R.id.ivPoster)
+            movie.posterUrl?.takeIf { it.isNotBlank() }?.let {
+                ivPoster.visibility = View.VISIBLE
+                ivPoster.load(it) { crossfade(true) }
+            }
+
             val genre = viewModel.getGenreById(movie.genreId)
 
             tvTitle.text = movie.title
@@ -96,7 +105,6 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                 addMetaItem(metaRow, "ДЛИТЕЛЬНОСТЬ", SettingsManager.formatDuration(requireContext(), duration))
             }
 
-// Если показывать нечего, прячем всю карточку, чтобы не было пустой плашки
             if (!hasMeta) metaRow.visibility = View.GONE
 
             if (!movie.review.isNullOrBlank()) {
