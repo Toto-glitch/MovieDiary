@@ -147,7 +147,7 @@ class AddMovieFragment : Fragment(R.layout.fragment_add_movie) {
                         chipStrokeWidth = 1f
                         setChipStrokeColorResource(R.color.colorBorder)
                         checkedIcon = null
-                        tag = genre.id // метка, чтобы потом найти чип по id жанра
+                        tag = genre.id
                     }
                     chip.setOnClickListener { selectGenreChip(chip, genre.id) }
                     chipGroup.addView(chip)
