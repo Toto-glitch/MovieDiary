@@ -57,9 +57,15 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             currentMovie = movie
 
             val ivPoster = view.findViewById<ImageView>(R.id.ivPoster)
-            movie.posterUrl?.takeIf { it.isNotBlank() }?.let {
-                ivPoster.visibility = View.VISIBLE
-                ivPoster.load(it) { crossfade(true) }
+            val heroContainer = view.findViewById<View>(R.id.heroContainer)
+
+            val posterUrl = movie.posterUrl
+            if (!posterUrl.isNullOrBlank()) {
+                ivPoster.load(posterUrl) { crossfade(true) }
+            } else {
+                heroContainer.layoutParams = heroContainer.layoutParams.apply {
+                    height = (140 * resources.displayMetrics.density).toInt()
+                }
             }
 
             val genre = viewModel.getGenreById(movie.genreId)
