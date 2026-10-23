@@ -151,7 +151,7 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
             checkedIcon = null
             chipStrokeWidth = if (active) 0f else 1f
             setChipStrokeColorResource(R.color.colorBorder)
-            setChipBackgroundColorResource(if (active) R.color.colorOnAccent else R.color.colorBackground)
+            setChipBackgroundColorResource(if (active) R.color.colorAccent else R.color.colorBackground)
             setTextColor(ContextCompat.getColor(ctx, if (active) R.color.colorBackground else R.color.colorTextMuted))
             typeface = if (active) Typeface.DEFAULT_BOLD else Typeface.DEFAULT
             setOnClickListener { onClick() }
