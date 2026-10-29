@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MovieDiary — дневник фильмов</title>
+  <meta name="description" content="MovieDiary - личный дневник фильмов с оценками, рецензиями, статистикой и автозаполнением из Кинопоиска.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="#top" class="logo">
+      <span class="logo__mark">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="#1A1A1E"/></svg>
+      </span>
+      MovieDiary
+    </a>
+  </header>
+
+  <main>
+    <section id="top" class="hero">
+      <div class="hero__text">
+        <h1>Ваш личный <span class="accent">дневник фильмов</span></h1>
+        <p class="hero__lead">Записывайте, что посмотрели, ставьте оценки, пишите рецензии и смотрите на свои вкусы в графиках. Название, постер и жанр подставятся из Кинопоиска за одно нажатие.</p>
+        <div class="hero__buttons">
+          <a href="#download" class="btn btn--main">Скачать приложение</a>
+          <a href="#features" class="btn btn--ghost">Узнать больше</a>
+        </div>
+      </div>
+
+      <div class="hero__phone">
+        <div class="phone phone--shot">
+          <img src="img/movies_list.png" alt="Экран списка фильмов в приложении">
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section section--alt">
+      <div class="container stack">
+        <div class="reveal">
+          <h2 class="section-title">Всё, что нужно киноману</h2>
+          <p class="section-lead" style="margin-top: 12px">Простой дневник без лишнего: быстро добавить, удобно найти, интересно посмотреть итоги.</p>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span>
+            <h3>Автозаполнение из Кинопоиска</h3>
+            <p>Введите название, выберите фильм из списка, и год, длительность, постер и жанр заполнятся сами.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span>
+            <h3>Оценки и рецензии</h3>
+            <p>Ставьте оценку от 1 до 10, записывайте впечатления и дату просмотра, чтобы ничего не забыть.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+            <h3>Статистика</h3>
+            <p>Круговая диаграмма по жанрам и график оценок покажут, что вы смотрите чаще всего.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4"/></svg></span>
+            <h3>Поиск, фильтры, сортировка</h3>
+            <p>Найдите фильм по названию, отфильтруйте по статусу или жанру, отсортируйте по году или оценке.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.5A8.5 8.5 0 0 1 10.5 3.5a8.5 8.5 0 1 0 10 10z"/></svg></span>
+            <h3>Тёмная и светлая темы</h3>
+            <p>Выберите оформление под настроение. Выбор сохраняется между запусками.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+            <h3>Данные на вашем устройстве</h3>
+            <p>Дневник хранится локально и работает без интернета. Сеть нужна только для поиска в Кинопоиске. Данные можно выгрузить в JSON.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens" class="section">
+      <div class="container stack">
+        <h2 class="section-title reveal">Как выглядит приложение</h2>
+        <div class="shots">
+          <figure class="shot reveal" style="margin: 0">
+            <div class="shot__frame shot__frame--filled">
+              <img src="img/movies_list.png" alt="Список фильмов">
+            </div>
+            <span>Список</span>
+          </figure>
+          <figure class="shot reveal" style="margin: 0">
+            <div class="shot__frame shot__frame--filled">
+              <img src="img/movie_add.png" alt="Добавление фильмов">
+            </div>
+            <span>Добавление</span>
+          </figure>
+          <figure class="shot reveal" style="margin: 0">
+            <div class="shot__frame shot__frame--filled">
+              <img src="img/movie_detail.png" alt="Информация о фильме">
+            </div>
+            <span>Фильм</span>
+          </figure>
+          <figure class="shot reveal" style="margin: 0">
+            <div class="shot__frame shot__frame--filled">
+              <IMG src="img/statistics.png" alt="Статистика">
+            </div>
+            <span>Статистика</span>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="cta-wrap">
+      <div class="cta reveal">
+        <h2>Начните вести свой дневник</h2>
+        <p>Скачайте приложение или изучите исходный код проекта на GitHub.</p>
+        <div class="cta__buttons">
+          <a href="https://github.com/" class="btn btn--dark">Скачать APK [ссылка]</a>
+          <a href="https://github.com/Toto-glitch/MovieDiary.git" class="btn btn--outline-dark">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>MovieDiary, 2026</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
