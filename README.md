@@ -2,7 +2,7 @@
 
 Android-приложение: личный дневник фильмов с оценками, рецензиями и статистикой. Данные фильма подтягиваются из Кинопоиска одним нажатием.
 
-[Сайт](https://<логин>.github.io/MovieDiary/) · [Скачать APK](https://github.com/<логин>/MovieDiary/releases/latest)
+[Сайт](https://<логин>.github.io/MovieDiary/) · [Скачать APK](https://github.com/Toto-glitch/MovieDiary/releases/tag/v1.0.0)
 
 <p align="center">
   <img src="docs/img/movies_list.png" width="23%" alt="Список">
