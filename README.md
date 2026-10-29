@@ -35,7 +35,3 @@ Android-приложение: личный дневник фильмов с оц
 ## Технологии
 
 Kotlin · XML Views · Fragments · MVVM · Room · Retrofit · Coil · MPAndroidChart
-
-## Автор
-
-[Имя Фамилия], [группа], 2026
