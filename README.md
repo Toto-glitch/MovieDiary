@@ -4,13 +4,6 @@ Android-приложение: личный дневник фильмов с оц
 
 [Сайт](https://<логин>.github.io/MovieDiary/) · [Скачать APK](https://github.com/Toto-glitch/MovieDiary/releases/tag/v1.0.0)
 
-<p align="center">
-  <img src="docs/img/movies_list.png" width="23%" alt="Список">
-  <img src="docs/img/add.png" width="23%" alt="Добавление">
-  <img src="docs/img/detail.png" width="23%" alt="Фильм">
-  <img src="docs/img/statistics.png" width="23%" alt="Статистика">
-</p>
-
 ## Возможности
 
 - Список фильмов с постерами, поиском, фильтрами по статусу и жанру, сортировкой
